@@ -1,0 +1,13 @@
+.item {
+  display: block;
+  padding: 20px;
+  width: 180px;
+  min-height: 400px;
+  background-color: azure;
+}
+.image {
+  width: 100%;
+}
+.title {
+  display: block;
+}
