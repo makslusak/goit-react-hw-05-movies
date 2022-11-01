@@ -14,7 +14,6 @@ export const MoviePage = () => {
       try {
         const { data } = await getMovieInfo(movieId);
         setFilmInfo(data);
-        console.log(data);
       } catch (error) {}
     };
     fetchData();

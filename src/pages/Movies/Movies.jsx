@@ -17,7 +17,6 @@ export const Movies = () => {
     evt.preventDefault();
     const responce = await getByName(search, 1);
     setSearchedFilms(responce.data.results);
-    console.log(responce.data.results);
   };
 
   return (
