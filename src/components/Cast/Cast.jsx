@@ -4,9 +4,9 @@ import css from './Cast.module.css';
 import { getCast } from '../../services/api';
 import imagePlaceholder from '../../images/film-poster-placeholder.png';
 
-export const Cast = () => {
+const Cast = () => {
   const { movieId } = useParams();
-  const [cast, setCast] = useState(null);
+  const [cast, setCast] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,22 +19,32 @@ export const Cast = () => {
   }, []);
 
   return (
-    <ul>
-      {cast?.map(actor => (
-        <li>
-          <img
-            src={
-              `https://image.tmdb.org/t/p/w300/${actor?.profile_path}` !==
-              `https://image.tmdb.org/t/p/w300/null`
-                ? `https://image.tmdb.org/t/p/w300/${actor?.profile_path}`
-                : imagePlaceholder
-            }
-            alt=""
-          />
-          <p>{actor.name}</p>
-          <p>{actor.character}</p>
-        </li>
-      ))}
-    </ul>
+    <>
+      {cast.length > 0 ? (
+        <ul className={css.list}>
+          {cast?.map(actor => (
+            <li className={css.item} key={actor.id}>
+              <img
+                className={css.image}
+                src={
+                  `https://image.tmdb.org/t/p/w300/${actor?.profile_path}` !==
+                  `https://image.tmdb.org/t/p/w300/null`
+                    ? `https://image.tmdb.org/t/p/w300/${actor?.profile_path}`
+                    : imagePlaceholder
+                }
+                alt=""
+              />
+              <div className={css.box}>
+                <p className={css.title}>{actor.name}</p>
+                <p>{actor.character}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>Sorry, we did not find information about the actors of this film.</p>
+      )}
+    </>
   );
 };
+export default Cast;

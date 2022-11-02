@@ -1,13 +1,20 @@
-import { NavLink, Outlet, useParams } from 'react-router-dom';
+import {
+  NavLink,
+  Outlet,
+  useParams,
+  useLocation,
+  Link,
+} from 'react-router-dom';
 import { useEffect } from 'react';
 import css from './MoviePage.module.css';
 import { getMovieInfo } from '../../services/api';
 import { useState } from 'react';
 import imagePlaceholder from '../../images/film-poster-placeholder.png';
 
-export const MoviePage = () => {
+const MoviePage = () => {
   const { movieId } = useParams();
   const [filmInfo, setFilmInfo] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,7 +28,10 @@ export const MoviePage = () => {
 
   return (
     <>
-      <div>
+      <Link className={css.goBack} to={location.state?.from ?? '/'}>
+        Go back
+      </Link>
+      <div className={css.wrapper}>
         <img
           src={
             `https://image.tmdb.org/t/p/w300/${filmInfo?.poster_path}` !==
@@ -31,20 +41,24 @@ export const MoviePage = () => {
           }
           alt={filmInfo?.title || filmInfo?.name}
         />
-        <div>
-          <div>
-            <h2>{filmInfo?.title || filmInfo?.name}</h2>
+        <div className={css.cont}>
+          <div className={css.box}>
+            <h2 className={css.title}>{filmInfo?.title || filmInfo?.name}</h2>
             <p>{filmInfo?.tagline}</p>
             <p>{filmInfo?.overview}</p>
           </div>
-          <div>
-            <h3>Additional inforvation</h3>
+          <div className={css.additional}>
+            <h3>Additional information</h3>
             <ul>
               <li>
-                <NavLink to={`/movies/${movieId}/cast`}>Cast</NavLink>
+                <NavLink className={css.link} to={`/movies/${movieId}/cast`}>
+                  Cast
+                </NavLink>
               </li>
               <li>
-                <NavLink to={`/movies/${movieId}/reviews`}>Reviews</NavLink>
+                <NavLink className={css.link} to={`/movies/${movieId}/reviews`}>
+                  Reviews
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -54,3 +68,4 @@ export const MoviePage = () => {
     </>
   );
 };
+export default MoviePage;

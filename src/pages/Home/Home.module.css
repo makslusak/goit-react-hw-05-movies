@@ -1,10 +1,37 @@
 .filmList {
   padding: 0;
   margin: 0;
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
   list-style: none;
   justify-content: space-between;
+}
+.title {
+  margin: 0 0 20px 0;
+  font-size: 30px;
+  font-weight: 500;
+  color: rgb(237, 233, 1);
+}
+.dayTop {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  list-style: none;
+  justify-content: space-between;
+}
+.dayImage {
+  display: block;
+  width: 100px;
+  transition: box-shadow 250ms ease-out;
+}
+.dayImage:hover,
+.dayImage:focus {
+  box-shadow: 0 8px 32px 0 rgba(183, 177, 148, 0.523);
 }

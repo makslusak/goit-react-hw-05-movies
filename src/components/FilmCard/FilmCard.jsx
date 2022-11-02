@@ -1,14 +1,23 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import css from './FilmCard.module.css';
-import { useParams } from 'react-router-dom';
+
 
 export const FilmCard = ({ image, title, rating, id }) => {
+  const location = useLocation();
   return (
     <li>
-      <Link to={`/movies/${id}`} className={css.item}>
+      <Link
+        state={{ from: location }}
+        to={`/movies/${id}`}
+        className={css.item}
+      >
         <img className={css.image} src={image} alt={title} />
-        <h3 className={css.title}>{title}</h3>
-        <p className={css.rating}>Rating {rating}</p>
+        <div className={css.wrapper}>
+          <h3 className={css.title}>{title}</h3>
+          <p className={css.rating}>
+            Rating: <span>{rating}</span>
+          </p>
+        </div>
       </Link>
     </li>
   );

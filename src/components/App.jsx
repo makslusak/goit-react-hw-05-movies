@@ -1,32 +1,37 @@
 import { Route, Routes } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 import { Section } from './Section/Section';
 import { Container } from './Container/Container';
 import { Header } from './Header/Header';
-import { Home } from 'pages/Home/Home';
-import { Movies } from 'pages/Movies/Movies';
-import { NotFound } from 'pages/NotFound/NotFound';
-import { MoviePage } from 'pages/MoviePage/MoviePage';
-import { getTrendings } from '../services/api';
-import { Cast } from './Cast/Cast';
-import { Reviews } from './Reviews/Reviews';
+import { Footer } from './Footer/Footer';
+
+const Home = lazy(() => import('pages/Home/Home'));
+const Movies = lazy(() => import('pages/Movies/Movies'));
+const NotFound = lazy(() => import('pages/NotFound/NotFound'));
+const MoviePage = lazy(() => import('pages/MoviePage/MoviePage'));
+const Cast = lazy(() => import('./Cast/Cast'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
 
 export const App = () => {
   return (
     <>
+      <Header />
       <Section>
         <Container>
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/movies" element={<Movies />} />
-            <Route path="/movies/:movieId" element={<MoviePage />}>
-              <Route path="/movies/:movieId/cast" element={<Cast />} />
-              <Route path="/movies/:movieId/reviews" element={<Reviews />} />
-            </Route>
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <Suspense fallback={<h2>Loading...</h2>}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/movies" element={<Movies />} />
+              <Route path="/movies/:movieId" element={<MoviePage />}>
+                <Route path="/movies/:movieId/cast" element={<Cast />} />
+                <Route path="/movies/:movieId/reviews" element={<Reviews />} />
+              </Route>
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
         </Container>
       </Section>
+      <Footer />
     </>
   );
 };

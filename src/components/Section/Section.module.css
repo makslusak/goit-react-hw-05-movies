@@ -1,0 +1,6 @@
+.section {
+  min-height: 100vh;
+  background-color: rgb(65, 65, 65);
+  padding-top: 20px;
+  padding-bottom: 20px;
+}

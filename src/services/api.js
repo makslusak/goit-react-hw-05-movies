@@ -2,6 +2,13 @@ import axios from 'axios';
 
 const API_KEY = '087b3a8cac1b0930cef8c04cbd521bfb';
 
+export const getTrendingsDay = async () => {
+  const responce = await axios.get(
+    `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`
+  );
+  return responce;
+};
+
 export const getTrendings = async () => {
   const responce = await axios.get(
     `https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}`

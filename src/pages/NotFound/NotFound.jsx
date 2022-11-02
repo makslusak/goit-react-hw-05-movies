@@ -1,5 +1,6 @@
 import css from './NotFound.module.css';
 
-export const NotFound = () => {
-  return <h2>NotFound</h2>;
+const NotFound = () => {
+  return <h2 className={css.title}>NotFound</h2>;
 };
+export default NotFound;
