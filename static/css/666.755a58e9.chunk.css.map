@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/666.755a58e9.chunk.css","mappings":"AAAA,uBAIE,aAAuB,CAFvB,cAAe,CACf,eAAgB,CAFhB,eAIF","sources":["pages/NotFound/NotFound.module.css"],"sourcesContent":[".title {\n  margin: 0 0 20px 0;\n  font-size: 30px;\n  font-weight: 500;\n  color: rgb(237, 233, 1);\n}\n"],"names":[],"sourceRoot":""}
