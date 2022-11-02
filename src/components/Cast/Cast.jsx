@@ -16,6 +16,7 @@ const Cast = () => {
       } catch (error) {}
     };
     fetchData();
+    // eslint-disable-next-line
   }, []);
 
   return (

@@ -24,6 +24,7 @@ const MoviePage = () => {
       } catch (error) {}
     };
     fetchData();
+    // eslint-disable-next-line
   }, []);
 
   return (

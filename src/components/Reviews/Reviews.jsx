@@ -16,6 +16,7 @@ const Reviews = () => {
       } catch (error) {}
     };
     fetchData();
+    // eslint-disable-next-line
   }, []);
 
   return (
